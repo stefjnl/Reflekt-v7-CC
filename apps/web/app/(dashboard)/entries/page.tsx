@@ -8,13 +8,13 @@ import { SearchForm } from "@/components/entries/search-form";
 export default async function EntriesPage({
   searchParams,
 }: {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
     q?: string;
     year?: string;
     from?: string;
     to?: string;
-  };
+  }>;
 }) {
   const session = await auth();
 
@@ -22,12 +22,13 @@ export default async function EntriesPage({
     return null;
   }
 
+  const params = await searchParams;
   const userId = parseInt(session.user.id!);
-  const page = parseInt(searchParams.page || "1");
-  const query = searchParams.q;
-  const year = searchParams.year;
-  const fromDate = searchParams.from;
-  const toDate = searchParams.to;
+  const page = parseInt(params.page || "1");
+  const query = params.q;
+  const year = params.year;
+  const fromDate = params.from;
+  const toDate = params.to;
 
   // Build filter conditions
   const conditions = [eq(entries.userId, userId)];

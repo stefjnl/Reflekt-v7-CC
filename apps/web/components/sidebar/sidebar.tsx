@@ -26,11 +26,15 @@ export function Sidebar({ userId }: SidebarProps) {
     recent: [],
   });
 
-  useEffect(() => {
+  const fetchEntries = () => {
     fetch("/api/entries?sidebar=true")
       .then((res) => res.json())
       .then(setEntries)
       .catch(console.error);
+  };
+
+  useEffect(() => {
+    fetchEntries();
   }, []);
 
   return (
@@ -68,11 +72,11 @@ export function Sidebar({ userId }: SidebarProps) {
             <span>New Entry</span>
           </button>
 
-          <SidebarSection title="Today" entries={entries.today} />
+          <SidebarSection title="Today" entries={entries.today} onDelete={fetchEntries} />
 
           <div className="border-t border-gray-200 dark:border-gray-700 mx-4 my-2" />
 
-          <SidebarSection title="" entries={entries.recent} />
+          <SidebarSection title="" entries={entries.recent} onDelete={fetchEntries} />
 
           <Link
             href="/entries"

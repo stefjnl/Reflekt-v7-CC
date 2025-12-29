@@ -44,9 +44,6 @@ export default async function EntryPage({
           className="prose prose-lg dark:prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: entry.content }}
         />
-        <p className="mt-6 text-sm text-gray-500">
-          TipTap editor will be integrated in Phase 6
-        </p>
       </div>
     </div>
   );

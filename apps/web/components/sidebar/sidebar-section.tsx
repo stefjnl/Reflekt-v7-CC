@@ -4,9 +4,10 @@ import { SidebarEntryItem } from "./sidebar-entry-item";
 interface SidebarSectionProps {
   title: string;
   entries: Entry[];
+  onDelete?: () => void;
 }
 
-export function SidebarSection({ title, entries }: SidebarSectionProps) {
+export function SidebarSection({ title, entries, onDelete }: SidebarSectionProps) {
   if (entries.length === 0) return null;
 
   return (
@@ -16,7 +17,7 @@ export function SidebarSection({ title, entries }: SidebarSectionProps) {
       </h2>
       <div className="space-y-1 px-2 pb-2">
         {entries.map((entry) => (
-          <SidebarEntryItem key={entry.id} entry={entry} />
+          <SidebarEntryItem key={entry.id} entry={entry} onDelete={onDelete} />
         ))}
       </div>
     </div>

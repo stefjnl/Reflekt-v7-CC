@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(pip install:*)",
+      "Bash(python test_db_connection.py:*)",
+      "Bash(pnpm install)",
+      "Bash(pnpm db:studio:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm tsx:*)",
+      "Bash(python test_users_schema.py:*)",
+      "Bash(pnpm dev)",
+      "Bash(python:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(cmd /c \"taskkill /F /PID 37800\")",
+      "Bash(curl:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(dir appsweb.nextstatic)",
+      "Bash(dir:*)",
+      "Bash(pnpm list:*)",
+      "Bash(cmd /c \"taskkill /F /PID 71052\")",
+      "Bash(timeout:*)"
+    ]
+  }
+}

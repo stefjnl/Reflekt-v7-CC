@@ -1,0 +1,25 @@
+{
+  "name": "reflekt-v6",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reflekt v6 - Premium digital diary with 11+ years of history",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "db:studio": "pnpm --filter @reflekt/db db:studio",
+    "db:generate": "pnpm --filter @reflekt/db db:generate",
+    "db:migrate": "pnpm --filter @reflekt/db db:migrate"
+  },
+  "devDependencies": {
+    "tsx": "^4.21.0",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}

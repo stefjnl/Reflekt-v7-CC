@@ -50,3 +50,7 @@ Thumbs.db
 *.db-journal
 *.sql
 drizzle/
+
+# Windows reserved device names (cannot be created/deleted normally)
+nul
+NUL

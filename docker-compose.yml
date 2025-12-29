@@ -11,7 +11,7 @@ services:
       - NODE_ENV=production
       - DATABASE_URL=postgresql://stefan:stefan_secure_password_2025@192.168.68.112:5432/reflekt-db?sslmode=prefer
       - AUTH_SECRET=${AUTH_SECRET:-reflekt_super_secret_key_2025_change_in_production}
-      - AUTH_URL=http://localhost:3005
+      - AUTH_URL=http://192.168.68.112:3005
       - PORT=3005
     restart: unless-stopped
     networks:

@@ -27,7 +27,7 @@ export async function GET(req: Request) {
       db.query.entries.findMany({
         where: and(eq(entries.userId, userId), lt(entries.createdAt, todayStart)),
         orderBy: [desc(entries.createdAt)],
-        limit: 20,
+        limit: 15,
       }),
     ]);
 

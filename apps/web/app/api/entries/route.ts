@@ -15,40 +15,23 @@ export async function GET(req: Request) {
   if (isSidebar) {
     const now = new Date();
     const todayStart = new Date(now.setHours(0, 0, 0, 0));
-    const yesterdayStart = new Date(todayStart);
-    yesterdayStart.setDate(yesterdayStart.getDate() - 1);
-    const thirtyDaysAgo = new Date(todayStart);
-    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
     const userId = parseInt(session.user.id!);
 
-    const [today, yesterday, previous30Days] = await Promise.all([
+    const [today, recent] = await Promise.all([
       db.query.entries.findMany({
         where: and(eq(entries.userId, userId), gte(entries.createdAt, todayStart)),
         orderBy: [desc(entries.createdAt)],
         limit: 10,
       }),
       db.query.entries.findMany({
-        where: and(
-          eq(entries.userId, userId),
-          gte(entries.createdAt, yesterdayStart),
-          lt(entries.createdAt, todayStart)
-        ),
-        orderBy: [desc(entries.createdAt)],
-        limit: 10,
-      }),
-      db.query.entries.findMany({
-        where: and(
-          eq(entries.userId, userId),
-          gte(entries.createdAt, thirtyDaysAgo),
-          lt(entries.createdAt, yesterdayStart)
-        ),
+        where: and(eq(entries.userId, userId), lt(entries.createdAt, todayStart)),
         orderBy: [desc(entries.createdAt)],
         limit: 20,
       }),
     ]);
 
-    return NextResponse.json({ today, yesterday, previous30Days });
+    return NextResponse.json({ today, recent });
   }
 
   // Regular pagination handled separately

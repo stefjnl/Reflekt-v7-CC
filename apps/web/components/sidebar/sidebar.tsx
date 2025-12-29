@@ -7,6 +7,7 @@ import { SidebarSection } from "./sidebar-section";
 import { ChevronLeft, Plus } from "lucide-react";
 import type { Entry } from "@reflekt/db";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface SidebarProps {
   userId: string;
@@ -14,8 +15,7 @@ interface SidebarProps {
 
 interface GroupedEntries {
   today: Entry[];
-  yesterday: Entry[];
-  previous30Days: Entry[];
+  recent: Entry[];
 }
 
 export function Sidebar({ userId }: SidebarProps) {
@@ -23,8 +23,7 @@ export function Sidebar({ userId }: SidebarProps) {
   const router = useRouter();
   const [entries, setEntries] = useState<GroupedEntries>({
     today: [],
-    yesterday: [],
-    previous30Days: [],
+    recent: [],
   });
 
   useEffect(() => {
@@ -70,11 +69,17 @@ export function Sidebar({ userId }: SidebarProps) {
           </button>
 
           <SidebarSection title="Today" entries={entries.today} />
-          <SidebarSection title="Yesterday" entries={entries.yesterday} />
-          <SidebarSection
-            title="Previous 30 Days"
-            entries={entries.previous30Days}
-          />
+
+          <div className="border-t border-gray-200 dark:border-gray-700 mx-4 my-2" />
+
+          <SidebarSection title="" entries={entries.recent} />
+
+          <Link
+            href="/entries"
+            className="flex items-center gap-2 p-4 text-sm text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
+          >
+            View All Entries
+          </Link>
         </div>
       )}
     </aside>

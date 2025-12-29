@@ -21,7 +21,10 @@
       "Bash(dir:*)",
       "Bash(pnpm list:*)",
       "Bash(cmd /c \"taskkill /F /PID 71052\")",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)"
     ]
   }
 }

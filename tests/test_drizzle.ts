@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { db, entries, users } from "./packages/db/src";
+import { db, entries, users } from "../packages/db/src";
 import { desc } from "drizzle-orm";
 
 async function testDrizzle() {
